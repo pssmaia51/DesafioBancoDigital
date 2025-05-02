@@ -2,16 +2,17 @@ package model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Transacao {
-    private String tipo; // "Depósito" ou "Saque"
+    private String tipo;
     private double valor;
-    private LocalDateTime dataHora;
+    private LocalDateTime data;
 
     public Transacao(String tipo, double valor) {
         this.tipo = tipo;
         this.valor = valor;
-        this.dataHora = LocalDateTime.now();
+        this.data = LocalDateTime.now();
     }
 
     public String getTipo() {
@@ -22,14 +23,15 @@ public class Transacao {
         return valor;
     }
 
-    public LocalDateTime getDataHora() {
-        return dataHora;
+    public LocalDateTime getData() {
+        return data;
     }
 
 
+
+    @Override
     public String toString() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return tipo + " de R$" + String.format("%.2f", valor) + " em " + dataHora.format(formato);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return data.format(formatter) + " - " + tipo + ": " + String.format("R$ %.2f", valor);
     }
-
 }

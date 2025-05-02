@@ -1,8 +1,8 @@
 package model;
 
 public class ContaCorrente extends Conta {
-    public ContaCorrente(Cliente cliente) {
-        super(cliente);
+    protected int numeroConta;
+    public ContaCorrente(int numero, Cliente titular) {
+        super(numero, titular);
     }
 }
-
